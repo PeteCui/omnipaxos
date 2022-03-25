@@ -1,14 +1,18 @@
 [package]
 name = "examples"
 version = "0.0.0"
-authors = ["Harald Ng <hng@kth.se>"]
+authors = ["Harald Ng <hng@kth.se>", "Zhanbo Cui <zhanbo@kth.se>"]
 edition = "2018"
 publish = false
 
 [dev-dependencies]
-omnipaxos_core = { path = "../omnipaxos_core" }
-omnipaxos_runtime = { path = "../omnipaxos_runtime" }
+omnipaxos_core = { git = "https://github.com/PeteCui/omnipaxos" }
+omnipaxos_runtime = { git = "https://github.com/PeteCui/omnipaxos" }
 tokio = { version = "1", features = ["sync", "macros"] }
+bytes = "1"
+structopt = "0.3"
+serde = {version = "1.0", features = ["derive"]}
+serde_json = "1.0"
 
 [[example]]
 name = "core"
