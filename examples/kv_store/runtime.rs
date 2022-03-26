@@ -199,10 +199,6 @@ async fn main() {
                         }
                         Operaiton::Snap =>{
                             //something will cause omni paxos wrong
-                            if omni_paxos.get_compacted_idx().await == omni_paxos.get_decided_idx().await{
-                                feedback_to_client("Successfully to snapshot").await;
-                                break;
-                            }
                             if let Ok(_) = omni_paxos
                                 .snapshot(None, false)
                                 .await{

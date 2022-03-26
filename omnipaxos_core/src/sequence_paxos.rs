@@ -223,6 +223,7 @@ where
             Compaction::Snapshot(idx) if idx <= decided_idx && idx > compacted_idx => {
                 let s = self.create_snapshot(idx);
                 self.set_snapshot(idx, s);
+                //self.leader_state.set_chosen_idx
             }
             _ => {
                 warn!(
@@ -1070,7 +1071,8 @@ where
             self.leader_state.set_accepted_idx(from, accepted.la);
             println!("accepted.la: {}", accepted.la);
             println!("self.leader_state.get_chosen_idx: {}", self.leader_state.get_chosen_idx());
-            if accepted.la > self.leader_state.get_chosen_idx()
+            //添加一个偏移量?
+            if accepted.la > self.leader_state.get_chosen_idx() //- self.get_compacted_idx()
                 && self.leader_state.is_chosen(accepted.la)
             {
                 self.leader_state.set_chosen_idx(accepted.la);
@@ -1338,7 +1340,8 @@ where
     }
 
     fn accept_entries(&mut self, n: Ballot, entries: Vec<T>) {
-        let la = self.storage.append_entries(entries);
+        //return the log length
+        let la = self.storage.append_entries(entries) + self.get_compacted_idx();
         if cfg!(feature = "latest_accepted") {
             match &self.latest_accepted_meta {
                 Some((round, outgoing_idx)) if round == &n => {
