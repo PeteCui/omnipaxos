@@ -2,7 +2,7 @@
 members = [
     "omnipaxos_core",
     "omnipaxos_runtime",
-    "examples"
+    "kv_store"
 ]
 
 [profile.release]

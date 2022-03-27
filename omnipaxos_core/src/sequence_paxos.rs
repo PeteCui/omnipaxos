@@ -1069,9 +1069,8 @@ where
         );
         if accepted.n == self.leader_state.n_leader && self.state == (Role::Leader, Phase::Accept) {
             self.leader_state.set_accepted_idx(from, accepted.la);
-            println!("accepted.la: {}", accepted.la);
-            println!("self.leader_state.get_chosen_idx: {}", self.leader_state.get_chosen_idx());
-            //添加一个偏移量?
+            //println!("accepted.la: {}", accepted.la);
+            //println!("self.leader_state.get_chosen_idx: {}", self.leader_state.get_chosen_idx());
             if accepted.la > self.leader_state.get_chosen_idx() //- self.get_compacted_idx()
                 && self.leader_state.is_chosen(accepted.la)
             {

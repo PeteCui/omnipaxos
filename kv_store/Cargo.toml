@@ -16,12 +16,16 @@ serde_json = "1.0"
 
 [[example]]
 name = "core"
-path = "tutorial/core.rs"
+path = "kv_store/core.rs"
 
 [[example]]
 name = "runtime"
-path = "tutorial/runtime.rs"
+path = "kv_store/runtime.rs"
 
 [[example]]
 name = "client"
-path = "tutorial/client.rs"
+path = "kv_store/client.rs"
+
+[[example]]
+name = "test"
+path = "kv_store/runtime_test.rs"
