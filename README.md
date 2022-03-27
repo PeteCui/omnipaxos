@@ -1,3 +1,25 @@
+This is a branch forked from haraldng/omnipaxos
+You can find a distributed in-memory KV store based on the Omni_Paxos implementation in kv_store directory
+
+How to boot node?
+1. Modify the network address and cluster configuration you need in the runtime.rs
+2. Modify the Cargo.toml
+3. Cargo run with the parameters --id --peers
+Example
+   cargo run --example runtime -- --id 3 --peers 1
+How to boot client?
+1. Modify the network address you need in the client.rs
+2. cargo run --example client
+
+How to use command?
+EXample
+Write: 
+1 w key value 
+Read: 
+1 r key
+Snapshot: 
+1 s
+
 OmniPaxos
 ============
 
