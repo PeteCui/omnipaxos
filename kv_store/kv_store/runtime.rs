@@ -64,9 +64,9 @@ async fn main() {
     // spawn thread to wait for any outgoing messages produced by SequencePaxos
     tokio::spawn(async move {
         while let Some(message) = sp_out.recv().await {
-            println!(" ");
-            println!("SP message: {:?} is received from SequencePaxos", message);
-            println!(" ");
+            //println!(" ");
+            //println!("SP message: {:?} is received from SequencePaxos", message);
+            //println!(" ");
             //get destination
             let mut addr = "127.0.0.1:".to_string();
             let port = 8080 + message.to;
@@ -126,9 +126,9 @@ async fn main() {
                     //println!("SP message: {} is received from network layer", msg);
                     let sp_msg: Message<KeyValue, KVSnapshot> = serde_json::from_str(&msg).unwrap();
 
-                    println!(" ");
-                    println!("SP message: {:?} is received from Network", sp_msg);
-                    println!(" ");
+                    //println!(" ");
+                    //println!("SP message: {:?} is received from Network", sp_msg);
+                    //println!(" ");
 
                     sp_in
                         .send(sp_msg)
@@ -208,11 +208,6 @@ async fn main() {
                                 }
                         }
                     }
-                    if let Ok(mut tcp_stream) = TcpStream::connect(CLIENT).await{
-                        let (_, mut w) = tcp_stream.split();
-                        //w.write_all(serialized.as_bytes()).await.unwrap();
-                    }
-                    
                 }
                 None => {} 
             }
